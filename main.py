@@ -3,12 +3,17 @@ import pandas
 import random
 
 BACKGROUND_COLOR = "#70d8e3"
-
+current_card = {}
+to_learn = {}
 
 # ---------------------------- CREATING NEW FLASH CARDS ------------------------------- #
-data = pandas.read_csv("data/kannada_words.csv")
-to_learn = data.to_dict(orient="records")
-current_card = {}
+try:
+    data = pandas.read_csv("data/words_to_learn.csv")
+except FileNotFoundError:
+    original_data = pandas.read_csv("kannada_words.csv")
+    to_learn = original_data.to_dict(orient="records")
+else:
+    to_learn = data.to_dict(orient="records")
 
 
 def next_card():
@@ -28,6 +33,14 @@ def flip_card():
     canvas.itemconfig(card_bg, image=card_back_img)
 
 
+# ---------------------------- FLIPPING THE CARD ------------------------------- #
+def is_known():
+    to_learn.remove(current_card)
+    next_card()
+    data = pandas.DataFrame(to_learn)
+    data.to_csv("data/words_to_learn.csv", index=False)
+
+
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
 window.title("Flashh")
@@ -45,13 +58,13 @@ canvas.grid(column=0, row=0, columnspan=2)
 
 yes_image = PhotoImage(file="images/yes.png")
 yes_button = Button(image=yes_image, highlightthickness=0, bg=BACKGROUND_COLOR, activebackground="#00fd00",
-                    command=next_card)
-yes_button.grid(column=0, row=1, padx=20, pady=20)
+                    command=is_known)
+yes_button.grid(column=1, row=1, padx=20, pady=20)
 
 no_image = PhotoImage(file="images/no.png")
 no_button = Button(image=no_image, highlightthickness=0, bg=BACKGROUND_COLOR, activebackground="#ff0000",
                    command=next_card)
-no_button.grid(column=1, row=1, padx=20, pady=20)
+no_button.grid(column=0, row=1, padx=20, pady=20)
 
 next_card()
 
