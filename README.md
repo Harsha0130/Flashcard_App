@@ -25,7 +25,7 @@ This is a simple Flashcard application built with Python and Tkinter. The app he
 - `data/words_to_learn.csv`: The file where the words yet to be learned are stored.
 - `images/`: Directory containing the images for the flashcards and buttons.
 
-## Screenshot
+## Screenshots
 
 ![Screenshot 2024-06-16 235531](https://github.com/Harsha0130/Flashcard_App/assets/127675058/7ce1c10e-d998-4fc7-90c6-b4398fb4f6b7)
 ![Screenshot 2024-06-16 235547](https://github.com/Harsha0130/Flashcard_App/assets/127675058/3ef04407-a2dc-4bdd-b624-ca2223302aa7)
