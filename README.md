@@ -1,6 +1,7 @@
 # Flashh - Flashcard Learning App
 
 This is a simple Flashcard application built with Python and Tkinter. The app helps users learn Kannada words by displaying flashcards that flip between Kannada and English translations.
+- This project is part of the "100 Days of Code: The Complete Python Pro Bootcamp for 2023" course by Dr. Angela Yu.
 
 ## Features
 
